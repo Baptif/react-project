@@ -10,6 +10,7 @@ import Header from './components/Header'
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState<UserInterface>()
+  const [searchUser, setCurrentSearchUser] = useState('')
   const { users, loading: usersLoading } = useUsers()
   const { profile, loading: profileLoading } = useProfile()
 
@@ -21,12 +22,16 @@ const App = () => {
     setCurrentUser(user)
   }
 
+  const handleChangeSearchUser = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentSearchUser(event.target.value.toLowerCase())
+  }
+
   return (
     <AppContainer>
-      <Header avatar={currentUser?.avatar} name={currentUser?.name} />
+      <Header avatar={currentUser?.avatar} name={currentUser?.name} onChange={handleChangeSearchUser} />
       <Page>
         <ListContainer>
-          <UserList users={users} onClick={handleUserClick} />
+          <UserList users={users.filter((user) => user.name.toLowerCase().includes(searchUser))} onClick={handleUserClick} />
           <ProfileContainer>
             <UserProfile avatar={profile.avatar} name={profile.name} />
           </ProfileContainer>
