@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import { AiFillAudio } from "react-icons/ai";
 import { BsFillGearFill } from "react-icons/bs";
+import { Avatar } from "./StyleAvatarText";
 
 type Props = {
     avatar: string
@@ -24,14 +25,7 @@ const Container = styled.div`
     align-items: center;
     gap:1rem;
     padding: 0.8rem;
-    cursor: pointer;
-    background-color: #1e2124;
-`
-
-const Avatar = styled.img`
-    height: 2rem;
-    width: 2rem;
-    border-radius: 2rem;
+    background-color: var(--primary);
 `
 
 export default UserProfile

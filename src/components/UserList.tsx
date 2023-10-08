@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import { UserInterface } from "../models/UserInterface"
-import User from "./User"
+import UserItem from "./UserItem"
 
 type Props = {
     users: UserInterface[],
@@ -11,7 +11,7 @@ const UserList = ({users, onClick}: Props) => {
     return(
         <UsersListe>
         {users.map(({name, avatar, id}) => (
-            <User 
+            <UserItem 
                 key={id} 
                 name={name}
                 avatar={avatar} 
